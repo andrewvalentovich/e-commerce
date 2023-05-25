@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Category</h1>
+                    <h1 class="m-0">Tag</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -28,9 +28,9 @@
                     <div class="card">
                         <div class="card-header d-flex p-3">
                             <div class="mr-3">
-                                <a href="{{ route('category.edit', $category) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('tag.edit', $tag) }}" class="btn btn-primary">Edit</a>
                             </div>
-                            <form action="{{ route('category.delete', $category->id) }}" method="post">
+                            <form action="{{ route('tag.delete', $tag->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <input type="submit" class="btn btn-danger" value="Delete">
@@ -42,11 +42,11 @@
                                 <tbody>
                                     <tr>
                                         <td>ID</td>
-                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $tag->id }}</td>
                                     </tr>
                                     <tr>
                                         <td>Title</td>
-                                        <td>{{ $category->title }}</td>
+                                        <td>{{ $tag->title }}</td>
                                     </tr>
                                 </tbody>
                             </table>

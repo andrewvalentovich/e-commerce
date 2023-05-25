@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Tag;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Tag;
 
 class ShowController extends Controller
 {
-    public function __invoke(Category $category)
+    public function __invoke(Tag $tag)
     {
-        return view('category.show', compact('category'));
+        return view('tag.show', compact('tag'));
     }
 }

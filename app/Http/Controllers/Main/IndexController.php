@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Main;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class IndexController extends Controller
 {
     public function __invoke()
     {
-        return view('admin');
+        return view('main.index');
     }
 }

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Tag;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Tag;
 
 class IndexController extends Controller
 {
     public function __invoke()
     {
-        $categories = Category::all();
-        return view('category.index', compact('categories'));
+        $tags = Tag::all();
+        return view('tag.index', compact('tags'));
     }
 }
