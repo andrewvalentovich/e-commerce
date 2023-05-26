@@ -11,5 +11,4 @@ class Color extends Model
 
     protected $table = 'colors';
     protected $guarded = [];
-
 }
