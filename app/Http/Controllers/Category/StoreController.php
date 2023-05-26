@@ -13,6 +13,6 @@ class StoreController extends Controller
         $data = $request->validated();
         Category::firstOrCreate($data);
 
-        return redirect()->route('category.store');
+        return redirect()->route('category.index');
     }
 }
