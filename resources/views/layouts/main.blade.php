@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2/css/select2.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 </head>
@@ -163,7 +164,7 @@
                         <a href="{{ route('user.index') }}" class="nav-link">
                             <i class="nav-icon far fa-user"></i>
                             <p>
-                                Users
+                                Пользователи
                             </p>
                         </a>
                     </li>
@@ -171,15 +172,15 @@
                         <a href="pages/gallery.html" class="nav-link">
                             <i class="nav-icon fas fa-shopping-bag"></i>
                             <p>
-                                Orders
+                                Заказы
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/gallery.html" class="nav-link">
+                        <a href="{{ route('product.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-tshirt"></i>
                             <p>
-                                Products
+                                Товары
                             </p>
                         </a>
                     </li>
@@ -187,7 +188,7 @@
                         <a href="{{ route('category.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-ticket-alt"></i>
                             <p>
-                                Categories
+                                Категории
                             </p>
                         </a>
                     </li>
@@ -195,7 +196,7 @@
                         <a href="{{ route('tag.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-tags"></i>
                             <p>
-                                Tags
+                                Тэги
                             </p>
                         </a>
                     </li>
@@ -203,7 +204,7 @@
                         <a href="{{ route('color.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-paint-brush"></i>
                             <p>
-                                Colors
+                                Цвета
                             </p>
                         </a>
                     </li>
@@ -246,5 +247,13 @@
 <script src="{{ asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
+<script>
+    $(function () {
+        //Initialize Select2 Elements
+        $('#product_tags').select2();
+        $('#product_colors').select2();
+    });
+</script>
 </body>
 </html>
