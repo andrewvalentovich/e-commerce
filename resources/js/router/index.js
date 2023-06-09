@@ -1,19 +1,19 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import Home from "../components/Home.vue";
+import MainIndex from "../components/Main/Index.vue";
 import NotFound from "../components/404.vue";
-import Page from "../components/Page.vue";
+import ProductIndex from "../components/Products/Index.vue";
 
 const routes = [
     {
         path: "/",
-        component: Home,
-        name: Home
+        component: MainIndex,
+        name: MainIndex
     },
     {
-        path: "/page",
-        component: Page,
-        name: Page
+        path: "/products",
+        component: ProductIndex,
+        name: ProductIndex
     },
     {
         path: "/:pathMatch(.*)*",
