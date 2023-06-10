@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import MainIndex from "../components/Main/Index.vue";
 import NotFound from "../components/404.vue";
-import ProductIndex from "../components/Products/Index.vue";
+import ProductIndex from "../components/Product/Index.vue";
 
 const routes = [
     {
