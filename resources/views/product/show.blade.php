@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">User</h1>
+                    <h1 class="m-0">Товар</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -41,7 +41,10 @@
                             <table class="table table-hover text-nowrap">
                                 <tbody>
                                     <tr>
-                                        <td><img src="{{ asset('storage/' . $product->preview_image) }}" alt="preview_image" style="max-height: 400px; max-width: 400px;"/></td>
+                                        <td>
+                                            <img src="{{ asset('storage/' . $product->preview_image) }}" alt="preview_image" style="max-height: 400px; max-width: 400px;"/>
+                                            <img src="{{ asset('storage/' . $product->hover_image) }}" alt="hover_image" style="max-height: 400px; max-width: 400px;"/>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>ID</th>
@@ -92,6 +95,10 @@
                                     <tr>
                                         <th>Категория</th>
                                         <td>{{ $product->category->title }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Группа</th>
+                                        <td>{{ $product->group->title }}</td>
                                     </tr>
                                     <tr>
                                         <th>Тэги</th>

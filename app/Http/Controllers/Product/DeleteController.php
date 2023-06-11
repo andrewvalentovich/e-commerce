@@ -16,6 +16,9 @@ class DeleteController extends Controller
         $product->category()->dissociate();
         $product->save();
 
+        $product->groups()->dissociate();
+        $product->save();
+
         $product->delete();
 
         return redirect()->route('product.index');

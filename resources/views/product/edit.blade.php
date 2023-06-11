@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Edit Product</h1>
+                    <h1 class="m-0">Редактировать продукта</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -46,8 +46,26 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="preview_image" class="custom-file-input" id="exampleInputFile">
+                                            <input type="file" name="preview_image" class="custom-file-input" id="preview_image">
                                             <label class="custom-file-label" for="exampleInputFile">Выберите фотографию товара</label>
+                                        </div>
+    {{--                                    <div class="input-group-append">--}}
+    {{--                                        <span class="input-group-text">Загрузить</span>--}}
+    {{--                                    </div>--}}
+                                    </div>
+                                </div>
+
+                                @if(isset($product->hover_image))
+                                    <div class="form-group">
+                                        <img src="{{ asset('storage/' . $product->hover_image) }}" alt="hover_image" style="max-height: 400px; max-width: 400px;"/>
+                                    </div>
+                                @endif
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="hover_image" class="custom-file-input" id="hover_image">
+                                            <label class="custom-file-label" for="exampleInputFile">Выберите hover-фотографию товара</label>
                                         </div>
     {{--                                    <div class="input-group-append">--}}
     {{--                                        <span class="input-group-text">Загрузить</span>--}}
@@ -91,6 +109,20 @@
                                         @endforeach
                                     </select>
                                 </div>
+
+                                <div class="form-group">
+                                    <select name="group_id" class="form-control select2" style="width: 100%;">
+                                        <option selected="selected" disabled>Выберите группу</option>
+                                        @foreach($groups as $group)
+                                            @if($group->id == $product->group->id)
+                                                <option selected value="{{ $group->id }}">{{ $group->title }}</option>
+                                            @else
+                                                <option value="{{ $group->id }}">{{ $group->title }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <select class="" id="product_tags1" name="tags[]" multiple="multiple" data-placeholder="Выберите тэги" style="width: 100%;">
                                         @foreach($tags as $tag)

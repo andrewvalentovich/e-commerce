@@ -18,6 +18,11 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+    public function group()
+    {
+        return $this->belongsTo(Group::class, 'group_id', 'id');
+    }
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'product_tags', 'product_id', 'tag_id');
@@ -31,5 +36,10 @@ class Product extends Model
     public function getPreviewImageUrlAttribute()
     {
         return url('storage/' . $this->preview_image);
+    }
+
+    public function getHoverImageUrlAttribute()
+    {
+        return url('storage/' . $this->hover_image);
     }
 }

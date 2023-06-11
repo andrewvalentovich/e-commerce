@@ -30,8 +30,20 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" name="preview_image" class="custom-file-input" id="exampleInputFile">
-                                    <label class="custom-file-label" for="exampleInputFile">Выберите фотографию товара</label>
+                                    <input type="file" name="preview_image" class="custom-file-input" id="preview_image">
+                                    <label class="custom-file-label" for="preview_image">Выберите фотографию товара</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Загрузить</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" name="hover_image" class="custom-file-input" id="hover_image">
+                                    <label class="custom-file-label" for="hover_image">Выберите hover-фотографию товара</label>
                                 </div>
                                 <div class="input-group-append">
                                     <span class="input-group-text">Загрузить</span>
@@ -68,6 +80,15 @@
                                 <option selected="selected" disabled>Выберите категорию</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select name="group_id" class="form-control select2" style="width: 100%;">
+                                <option selected="selected" disabled>Выберите группу</option>
+                                @foreach($groups as $group)
+                                    <option value="{{ $group->id }}">{{ $group->title }}</option>
                                 @endforeach
                             </select>
                         </div>

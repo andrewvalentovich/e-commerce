@@ -221,7 +221,7 @@
                                                     <div class="products-three-single-img">
                                                         <a href="shop-details-3.html" class="d-block">
                                                             <img :src="product.preview_image_url" class="first-img" alt="" />
-                                                            <img src="assets/images/home-three/productss2-hover-1.png" alt="" class="hover-img" />
+                                                            <img :src="product.hover_image_url" alt="" class="hover-img" />
                                                         </a>
                                                         <div class="products-grid-one__badge-box"> <span
                                                             class="bg_base badge new ">New</span>
@@ -242,7 +242,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a :href="`#popup${ product.id }`" class="popup_link">
+                                                                    <a @click="getProduct(product.id)" :href="`#popup${ product.id }`" class="popup_link">
                                                                         <i class="flaticon-visibility"></i>
                                                                         <span> quick view</span>
                                                                     </a>
@@ -251,7 +251,7 @@
                                                         </div>
                                                     </div>
                                                     <div :id="`popup${ product.id }`" class="product-gird__quick-view-popup mfp-hide">
-                                                        <div class="container">
+                                                        <div v-if="popupProduct" class="container">
                                                             <div class="row justify-content-between align-items-center">
                                                                 <div class="col-lg-6">
                                                                     <div class="quick-view__left-content">
@@ -261,7 +261,7 @@
                                                                                     <li
                                                                                         class="tab-nav popup-product-thumb">
                                                                                         <a href="#tabb1">
-                                                                                            <img :src="product.preview_image_url"
+                                                                                            <img :src="popupProduct.preview_image_url"
                                                                                                  alt="" /> </a> </li>
                                                                                     <li
                                                                                         class="tab-nav popup-product-thumb ">
@@ -280,7 +280,7 @@
                                                                                      class="tab-item popup-product-image">
                                                                                     <div
                                                                                         class="popup-product-single-image">
-                                                                                        <img :src="product.preview_image_url"
+                                                                                        <img :src="popupProduct.preview_image_url"
                                                                                              alt="" /> </div>
                                                                                 </div>
                                                                                 <div id="tabb2"
@@ -307,7 +307,7 @@
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="popup-right-content">
-                                                                        <h3>{{ product.title }}</h3>
+                                                                        <h3>{{ popupProduct.title }}</h3>
                                                                         <div class="ratting"> <i
                                                                             class="flaticon-star"></i> <i
                                                                             class="flaticon-star"></i> <i
@@ -315,22 +315,19 @@
                                                                             <i class="flaticon-star"></i> <i
                                                                                 class="flaticon-star"></i>
                                                                             <span>(112)</span> </div>
-                                                                        <p class="text">{{ product.description }}</p>
+                                                                        <p class="text">{{ popupProduct.description }}</p>
                                                                         <div class="price">
-                                                                            <h2> {{ product.price }} <del> $65 USD</del></h2>
+                                                                            <h2> {{ popupProduct.price }} <del> $65 USD</del></h2>
                                                                             <h6> In stuck</h6>
                                                                         </div>
-                                                                        <div class="color-varient"> <a href="#0"
-                                                                                                       class="color-name pink">
-                                                                            <span>Pink</span> </a> <a href="#0"
-                                                                                                      class="color-name red">
-                                                                            <span>Red</span> </a>
-                                                                            <a href="#0"
-                                                                               class="color-name yellow"><span>Yellow</span>
-                                                                            </a> <a href="#0" class="color-name blue">
-                                                                                <span>Blue</span>
-                                                                            </a> <a href="#0" class="color-name black">
-                                                                                <span>Black</span> </a> </div>
+                                                                        <div class="color-varient">
+                                                                            <template v-for="groupProduct in popupProduct.group_products">
+                                                                                <a @click.prevent="getProduct(groupProduct.id)" v-for="color in groupProduct.colors" href="#0" :style="`background: ${color.code};`" class="color-name">
+                                                                                    <span>{{ color.name }}</span>
+                                                                                </a>
+                                                                            </template>
+
+                                                                        </div>
                                                                         <div class="add-product">
                                                                             <h6>Qty:</h6>
                                                                             <div class="button-group">
@@ -2131,7 +2128,8 @@
         },
         data() {
           return {
-              products: []
+              products: [],
+              popupProduct: null
           }
         },
         methods: {
@@ -2143,7 +2141,16 @@
                 .finally( v => {
                     $(document).trigger('change');
                 })
-            }
+            },
+            getProduct(id) {
+                this.axios.get(`http://localhost:8879/api/products/${id}`)
+                .then( res => {
+                    this.popupProduct = res.data.data;
+                })
+                .finally( v => {
+                    $(document).trigger('change');
+                })
+            },
         }
     }
 </script>

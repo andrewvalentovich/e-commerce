@@ -30,6 +30,7 @@ class UpdateRequest extends FormRequest
             'description' => 'nullable',
             'content' => 'nullable',
             'preview_image' => 'nullable',
+            'hover_image' => 'nullable',
             'count' => 'nullable',
             'price' => 'nullable',
             'category_id' => 'nullable',

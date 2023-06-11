@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Product;
 
 use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\Color\ColorResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
@@ -22,10 +23,12 @@ class ProductResource extends JsonResource
             'description' => $this->description,
             'content' => $this->content,
             'preview_image_url' => $this->previewImageUrl, // Получаем путь к картинке, см. модель Product getPreviewImageUrlAttribute
+            'hover_image_url' => $this->hoverImageUrl, // Получаем путь к картинке, см. модель Product getPreviewImageUrlAttribute
             'price' => $this->price,
             'count' => $this->count,
             'is_published' => $this->is_published,
-            'category' => new CategoryResource($this->category)
+            'colors' => ColorResource::collection($this->colors),
+            'category' => new CategoryResource($this->category),
         ];
     }
 }

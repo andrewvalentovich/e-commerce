@@ -17,6 +17,10 @@ class UpdateController extends Controller
             $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
         }
 
+        if (isset($data['hover_image'])) {
+            $data['hover_image'] = Storage::disk('public')->put('/images', $data['hover_image']);
+        }
+
         $tagsIds = $data['tags'];
         $colorsIds = $data['colors'];
         unset($data['tags'], $data['colors']);

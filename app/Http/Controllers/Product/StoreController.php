@@ -17,6 +17,7 @@ class StoreController extends Controller
         $data = $request->validated();
 
         $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+        $data['hover_image'] = Storage::disk('public')->put('/images', $data['hover_image']);
 
         $tagsIds = $data['tags'];
         $colorsIds = $data['colors'];
